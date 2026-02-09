@@ -8,14 +8,16 @@ struct Node{
 };
 
 Node* insertAtEnd(Node* &head, int data ){
+    Node* newNode = new Node();
     if(!head){
+        head = newNode;
         head->data = data;
         head->next = NULL;
     }
     else{
-        Node* newNode = new Node();
+        
         Node* temp = head;
-        while(temp!=NULL){
+        while(temp->next!=NULL){
             temp = temp->next;
         }
         temp->next = newNode;
@@ -26,9 +28,9 @@ Node* insertAtEnd(Node* &head, int data ){
 }
 
 
-Node* createLinkedList(int arr[],Node* &head){
-    for (int a: arr){
-        insertAtEnd(head,a);
+Node* createLinkedList(int arr[],int n, Node* &head){
+    for (int i = 0; i<n; i++){
+        insertAtEnd(head,arr[i]);
     }
     return head;
 }
